@@ -29,7 +29,7 @@ $videosArray = $resultSet->fetchAll(PDO::FETCH_ASSOC);
             <a class="logo" href="./index.php"></a>
 
             <div class="cabecalho__icones">
-                <a href="./pages/enviar-video.php" class="cabecalho__videos"></a>
+                <a href="/video-form.php" class="cabecalho__videos"></a>
                 <a href="./pages/login.html" class="cabecalho__sair">Sair</a>
             </div>
         </nav>
@@ -44,8 +44,8 @@ $videosArray = $resultSet->fetchAll(PDO::FETCH_ASSOC);
                     <img src="./img/logo.png" alt="logo canal alura">
                     <h3><?= $video['title'] ?></h3>
                     <div class="acoes-video">
-                        <a href="./pages/enviar-video.html">Editar</a>
-                        <a href="./pages/delete-video.php?id=<?= $video['id'] ?>">Excluir</a>
+                        <a href="/video-form.php?id=<?= $video['id'] ?>">Editar</a>
+                        <a href="/pages/delete-video.php?id=<?= $video['id'] ?>">Excluir</a>
                     </div>
                 </div>
             </li>
