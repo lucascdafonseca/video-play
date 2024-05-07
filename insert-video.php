@@ -1,6 +1,6 @@
 <?php
 
-$dbPath = __DIR__ . '/../db.sqLite';
+$dbPath = __DIR__ . '/db.sqLite';
 $pdo = new PDO("sqlite:$dbPath");
 
 $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
