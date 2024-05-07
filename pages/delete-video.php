@@ -1,6 +1,6 @@
 <?php
 
-$dbPath = '../db.sqLite';
+$dbPath = __DIR__ . '/../db.sqLite';
 $pdo = new PDO("sqlite:$dbPath");
 
 $id = $_GET['id'];
@@ -11,4 +11,4 @@ $preparedStatement->bindValue(1, $id);
 
 $preparedStatement->execute();
 
-header('Location: ../index.php');
+header('Location: /');

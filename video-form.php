@@ -39,10 +39,10 @@ if ($id !== false && $id !== null ) {
     <header>
 
         <nav class="cabecalho">
-            <a class="logo" href="../index.php"></a>
+            <a class="logo" href="/"></a>
 
             <div class="cabecalho__icones">
-                <a href="/video-form.php" class="cabecalho__videos"></a>
+                <a href="/new-video" class="cabecalho__videos"></a>
                 <a href="../pages/login.php" class="cabecalho__sair">Sair</a>
             </div>
         </nav>
@@ -51,7 +51,7 @@ if ($id !== false && $id !== null ) {
 
     <main class="container">
 
-        <form class="container__formulario" action="<?= ($id !== false && $id !== null ) ? 'pages/update-video.php?id=' . $id : 'pages/insert-video.php'; ?>" method="post">
+        <form class="container__formulario" method="post">
             <h2 class="formulario__titulo">Envie um vídeo!</h2>
             <div class="formulario__campo">
                 <label class="campo__etiqueta" for="url">Link embed</label>

@@ -1,17 +1,17 @@
 <?php
 
-$dbPath = '../db.sqLite';
+$dbPath = __DIR__ . '/../db.sqLite';
 $pdo = new PDO("sqlite:$dbPath");
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
 if ($url === false) {
-    header('Location: ../index.php?sucesso=0');
+    header('Location: /?sucesso=0');
     exit();
 }
 $title = filter_input(INPUT_POST, 'titulo');
 if ($url === false) {
-    header('Location: ../index.php?sucesso=0');
+    header('Location: /?sucesso=0');
     exit();
 }
 
@@ -24,4 +24,4 @@ $statement->bindValue(':id', $id);
 
 $statement->execute();
 
-header('Location: ../index.php');
+header('Location: /');
