@@ -5,7 +5,7 @@ namespace Project\Mvc\Controller;
 use Project\Mvc\Entity\Video;
 use Project\Mvc\Repository\VideoRepository;
 
-class VideoUpdateController
+class VideoUpdateController implements IController
 {
     private VideoRepository $repository;
 

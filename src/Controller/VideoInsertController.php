@@ -5,10 +5,8 @@ namespace Project\Mvc\Controller;
 use Project\Mvc\Entity\Video;
 use Project\Mvc\Repository\VideoRepository;
 
-class VideoInsertController
+class VideoInsertController implements IController
 {
-
-
     private VideoRepository $repository;
 
     public function __construct(VideoRepository $repository)

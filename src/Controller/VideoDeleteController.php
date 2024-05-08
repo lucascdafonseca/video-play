@@ -4,7 +4,7 @@ namespace Project\Mvc\Controller;
 
 use Project\Mvc\Repository\VideoRepository;
 
-class VideoDeleteController
+class VideoDeleteController implements IController
 {
     private VideoRepository $repository;
 
@@ -12,7 +12,7 @@ class VideoDeleteController
     {
         $this->repository = $repository;
     }
-
+    
     public function processRequest()
     {
         $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);

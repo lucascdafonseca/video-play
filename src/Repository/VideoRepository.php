@@ -66,6 +66,7 @@ class VideoRepository
         $prepared->bindValue(1, $id);
         $prepared->execute();
         $videoData = $prepared->fetch(PDO::FETCH_ASSOC);
+        
         $video = new Video($videoData['url'], $videoData['title']);
         $video->setId($videoData['id']);
 
