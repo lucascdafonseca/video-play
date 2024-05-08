@@ -1,27 +1,28 @@
 <?php
 
+use Project\Mvc\Entity\Video;
+use Project\Mvc\Repository\VideoRepository;
+
 $dbPath = __DIR__ . '/db.sqLite';
 $pdo = new PDO("sqlite:$dbPath");
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
+
 if ($url === false) {
     header('Location: /?sucesso=0');
     exit();
 }
 $title = filter_input(INPUT_POST, 'titulo');
-if ($url === false) {
+if ($title === false) {
     header('Location: /?sucesso=0');
     exit();
 }
 
-$query =  'UPDATE videos SET url = :url, title = :title WHERE id = :id;';
+$video = new Video($url,$title);
+$video->setId($id);
 
-$statement = $pdo->prepare($query);
-$statement->bindValue(':url', $url);
-$statement->bindValue(':title', $title);
-$statement->bindValue(':id', $id);
-
-$statement->execute();
+$repository = new VideoRepository($pdo);
+$repository->updateVideo($video);
 
 header('Location: /');

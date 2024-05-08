@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
 if ($_SERVER['REQUEST_URI'] === '/') {
     require_once __DIR__ . '/../list-videos.php';
 } else if ($_SERVER['PATH_INFO'] === '/new-video') {
