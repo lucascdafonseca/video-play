@@ -1,23 +1,41 @@
 <?php
 
+use Project\Mvc\Controller\VideoDeleteController;
+use Project\Mvc\Controller\VideoFormController;
+use Project\Mvc\Controller\VideoInsertController;
+use Project\Mvc\Controller\VideoListController;
+use Project\Mvc\Controller\VideoUpdateController;
+use Project\Mvc\Repository\VideoRepository;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
+$dbPath = __DIR__ . '/../db.sqLite';
+$pdo = new PDO("sqlite:$dbPath");
+$videoRepository = new VideoRepository($pdo);
+
+
 if ($_SERVER['REQUEST_URI'] === '/') {
-    require_once __DIR__ . '/../list-videos.php';
+    $controller = new VideoListController($videoRepository);
+    $controller->processRequest();
 } else if ($_SERVER['PATH_INFO'] === '/new-video') {
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        require_once __DIR__ . '/../video-form.php';
+        $controller = new VideoFormController($videoRepository);
+        $controller->processRequest();
     } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        require_once __DIR__ . '/..//insert-video.php';
+        $controller = new VideoInsertController($videoRepository);
+        $controller->processRequest();
     }
 } else if ($_SERVER['PATH_INFO'] === '/edit-video') {
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        require_once __DIR__ . '/../video-form.php';
+        $controller = new VideoFormController($videoRepository);
+        $controller->processRequest();
     } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        require_once __DIR__ . '/../update-video.php';
+        $controller = new VideoUpdateController($videoRepository);
+        $controller->processRequest();
     }
 } else if ($_SERVER['PATH_INFO'] === '/remove-video') {
-    require_once __DIR__ . '/../delete-video.php';
+    $controller = new VideoDeleteController($videoRepository);
+    $controller->processRequest();
 } else {
     http_response_code(404);
 }

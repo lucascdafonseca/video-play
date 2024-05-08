@@ -32,7 +32,7 @@ class VideoRepository
         return $statement->execute();
     }
 
-    public function getAll()
+    public function getAll() : array
     {
         $query = 'SELECT * FROM  videos;';
         $resultSet = $this->pdo->query($query);
